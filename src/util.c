@@ -39,5 +39,4 @@ void win_add_border(WINDOW *win) {
 
     wrefresh(win);
     wgetch(win);
-
 }
