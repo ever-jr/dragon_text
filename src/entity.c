@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include "entity.h"
+#include "../include/entity.h"
 
 Entity entity_new(char name[], int health) {
     Entity e;
