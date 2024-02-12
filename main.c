@@ -27,8 +27,6 @@ static void show_win_size(WINDOW *win) {
     // );
 
     win_add_border(win);
-
-    wrefresh(win);
     wgetch(win);
 }
 

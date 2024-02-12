@@ -12,18 +12,16 @@ void win_add_border(WINDOW *win) {
             bool e_col = col == size_cols - 1;
 
             bool is_vertice =
-                (s_row && s_col)
-                || (s_row && e_col)
-                || (e_row && s_col)
-                || (e_row && e_col);
+                (s_row || e_row) &&
+                (s_col || e_col);
 
             bool is_horizontal_edge =
-                (s_row && (!s_col || !e_col)) ||
-                (e_row && (!s_col || !e_col));
+                (s_row || e_row ) &&
+                (!s_col || !e_col);
 
             bool is_vertical_edge =
-                (s_col && (!s_row || !e_row)) ||
-                (e_col && (!s_row || !e_row));
+                (s_col || e_col ) &&
+                (!s_row || !e_row);
 
             char c;
             if (is_vertice) {
@@ -32,9 +30,7 @@ void win_add_border(WINDOW *win) {
                 c = '-';
             } else if (is_vertical_edge) {
                 c = '|';
-            } else {
-                c = '0';
-            }
+            } else continue;
 
             wmove(win, row, col);
             waddch(win, c);
